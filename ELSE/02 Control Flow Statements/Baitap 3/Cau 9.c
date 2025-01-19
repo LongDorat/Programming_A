@@ -6,12 +6,12 @@ int main()
     scanf("%lf %lf %lf", &a, &n, &epsilon);
 
     double x_0 = a / n;
-    double x_k = fabs(((n - 1) * powf(x_0, n) + a) / (n * powf(x_0, n - 1)));
+    double x_k = fabs(((n - 1) * pow(x_0, n) + a) / (n * pow(x_0, n - 1)));
 
-    while (fabs(a - powf(x_k, n)) >= epsilon)
+    while (fabs(a - pow(x_k, n)) >= epsilon)
     {
         x_0 = x_k;
-        x_k = fabs(((n - 1) * powf(x_0, n) + a) / (n * powf(x_0, n - 1)));
+        x_k = fabs(((n - 1) * pow(x_0, n) + a) / (n * pow(x_0, n - 1)));
     }
 
     printf("%.8lf", x_k);
