@@ -12,7 +12,7 @@ int isSort(int A[], int n)
 
 int main()
 {
-    int A[] = {-1, 1, 4, 5, 10, 15};
+    int A[] = {-1, -3, -1, 5, 7};
     int n = sizeof(A) / sizeof(int);
     if (isSort(A, n))
         printf("YES");
