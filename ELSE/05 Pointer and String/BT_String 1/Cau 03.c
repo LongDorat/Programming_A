@@ -1,14 +1,16 @@
 #include <stdio.h>
+#include <string.h>
 
 int Compare(char *s1, char *s2)
 {
-    int n = strlen(s1);
-    int m = strlen(s2);
-
-    for (int i = 0, j = 0; i < n && j < m; i++, j++)
+    int i = 0;
+    int j = 0;
+    while (s1[i] != '\0' && s2[j] != '\0')
     {
         if (s1[i] - s2[j] == 0 || s1[i] - s2[j] == 32 || s1[i] - s2[j] == -32)
         {
+            i++;
+            j++;
             continue;
         }
         else if (s1[i] - s2[j] < 0)
@@ -19,6 +21,8 @@ int Compare(char *s1, char *s2)
         {
             return 1;
         }
+        i++;
+        j++;
     }
 
     return 0;
