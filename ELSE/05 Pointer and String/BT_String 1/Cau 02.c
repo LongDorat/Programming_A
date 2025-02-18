@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdbool.h>
 
-bool palindrome(char* s)
+bool palindrome(char *s)
 {
     int n = strlen(s);
     for (int i = 0; i < n / 2; i++)
@@ -18,7 +18,9 @@ bool palindrome(char* s)
 int main()
 {
     char s[500];
-    scanf("%s", s);
+    fgets(s, 500, stdin);
+    s[strlen(s) - 1] = '\0';
+
     printf("%s\n", s);
     if (palindrome(s))
     {
@@ -28,5 +30,6 @@ int main()
     {
         printf("NO\n");
     }
+
     return 0;
 }
