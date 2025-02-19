@@ -15,14 +15,12 @@ This repository contains a collection of C programming exercises and examples, c
 The repository is organized into several directories, each containing related exercises and examples:
 
 ```text
-└── ELSE
-    ├── 01 Variables, Input, Output
-    │   ├── Baitap 1
-    │   │   ├── Cau 1.c
-    │   │   ├── Cau ....c
-    │   │   └── Include.h
-    │   └── Baitap ...
-    └── 02 Control Flow Statement
+├── 01 Variables, Input, Output
+│   ├── Baitap 1
+│   │   ├── Cau 01.c
+│   │   └──  Cau ....c
+│   └── Baitap ...
+└── 02 Control Flow Statement
 ```
 
 ## Usage
@@ -34,7 +32,7 @@ The repository is organized into several directories, each containing related ex
    Navigate to the desired directory (e.g., `ELSE/01 Variables, Input, Output/Baitap 1`).
 
 3. **Step 3: Open the Relevant Exercise File**  
-   Open the relevant exercise file (e.g., `Cau 1.c`) and build it.
+   Open the relevant exercise file (e.g., `Cau 01.c`) and build it.
 
 4. **Step 4: Run the Program**  
     Run the program with testcases or your own input.
