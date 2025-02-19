@@ -1,4 +1,5 @@
-#include "Include.h"
+#include <stdio.h>
+#include <math.h>
 
 struct Point
 {
