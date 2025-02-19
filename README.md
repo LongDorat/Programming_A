@@ -15,12 +15,14 @@ This repository contains a collection of C programming exercises and examples, c
 The repository is organized into several directories, each containing related exercises and examples:
 
 ```text
+Programming_A
 ├── 01 Variables, Input, Output
 │   ├── Baitap 1
 │   │   ├── Cau 01.c
-│   │   └──  Cau ....c
+│   │   └── Cau ....c
 │   └── Baitap ...
 └── 02 Control Flow Statement
+...
 ```
 
 ## Usage
@@ -29,7 +31,7 @@ The repository is organized into several directories, each containing related ex
    Clone the repository using `git clone`.
 
 2. **Step 2: Navigate to the Desired Directory**  
-   Navigate to the desired directory (e.g., `ELSE/01 Variables, Input, Output/Baitap 1`).
+   Navigate to the desired directory (e.g., `/path/to/Programming_A/01 Variables, Input, Output/Baitap 1`).
 
 3. **Step 3: Open the Relevant Exercise File**  
    Open the relevant exercise file (e.g., `Cau 01.c`) and build it.
