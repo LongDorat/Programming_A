@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run Program with MSVC (cl.exe)",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "preLaunchTask": "Build with MSVC (cl.exe)",
+            "program": "${workspaceFolder}/bin/Debug/${fileBasenameNoExtension}.exe",
+            "cwd": "${workspaceFolder}/bin/Debug",
+            "stopAtEntry": false,
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Run Program with GCC",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "preLaunchTask": "Build with GCC",
+            "program": "${workspaceFolder}/bin/Debug/${fileBasenameNoExtension}.exe",
+            "cwd": "${workspaceFolder}/bin/Debug",
+            "stopAtEntry": false,
+            "console": "integratedTerminal"
+        }
+    ]
+}

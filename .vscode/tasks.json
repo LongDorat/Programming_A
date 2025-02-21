@@ -1,0 +1,60 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "Build with MSVC (cl.exe)",
+            "command": "cl.exe",
+            "args": [
+                "/Zi",
+                "/EHsc",
+                "/nologo",
+                "/Fe${workspaceFolder}\\bin\\Debug\\${fileBasenameNoExtension}.exe",
+                "${file}"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}\\bin\\Debug"
+            },
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "group": "build"
+        },
+        {
+            "type": "shell",
+            "label": "Build with GCC",
+            "command": "gcc",
+            "args": [
+                "-g",
+                "-o",
+                "${workspaceFolder}\\bin\\Debug\\${fileBasenameNoExtension}.exe",
+                "${file}"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}\\bin\\Debug"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build"
+        },
+        {
+            "type": "shell",
+            "label": "Build with Clang",
+            "command": "clang",
+            "args": [
+                "-g",
+                "-o",
+                "${workspaceFolder}\\bin\\Debug\\${fileBasenameNoExtension}.exe",
+                "${file}"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}\\bin\\Debug"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build"
+        }
+    ]
+}
