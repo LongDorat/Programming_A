@@ -20,6 +20,16 @@
             "cwd": "${workspaceFolder}/bin/Debug",
             "stopAtEntry": false,
             "console": "integratedTerminal"
+        },
+        {
+            "name": "Run Program with CLang",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "preLaunchTask": "Build with Clang",
+            "program": "${workspaceFolder}/bin/Debug/${fileBasenameNoExtension}.exe",
+            "cwd": "${workspaceFolder}/bin/Debug",
+            "stopAtEntry": false,
+            "console": "integratedTerminal"
         }
     ]
 }

@@ -2,6 +2,15 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "type": "shell",
+            "label": "Generate Debug folder",
+            "command": "cmd",
+            "args": [
+            "/c",
+            "if not exist \"${workspaceFolder}\\bin\\Debug\" mkdir \"${workspaceFolder}\\bin\\Debug\""
+            ]
+        },
+        {
             "type": "cppbuild",
             "label": "Build with MSVC (cl.exe)",
             "command": "cl.exe",
@@ -36,7 +45,8 @@
             "problemMatcher": [
                 "$gcc"
             ],
-            "group": "build"
+            "group": "build",
+            "dependsOn": "Generate Debug folder"
         },
         {
             "type": "shell",
@@ -54,7 +64,8 @@
             "problemMatcher": [
                 "$gcc"
             ],
-            "group": "build"
+            "group": "build",
+            "dependsOn": "Generate Debug folder"
         }
     ]
 }
