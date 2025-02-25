@@ -7,15 +7,15 @@ int main()
     fgets(s, 500, stdin);
     printf("%s", s);
 
-    int countblank = 1;
+    int countWord = 1;
     for (int i = 0; i < strlen(s); i++)
     {
-        if (s[i] == ' ')
+        if (s[i] == ' ' & s[i+1] != ' ')
         {
-            countblank++;
+            countWord++;
         }
     }
-    printf("%d", countblank);
+    printf("%d", countWord);
 
     return 0;
 }
