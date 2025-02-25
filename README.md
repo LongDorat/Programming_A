@@ -1,6 +1,6 @@
 # Programming A
 
-This repository contains a collection of C programming exercises and examples, covering various topics such as variables, input/output, data structures, and more.
+This repository contains a collection of C programming exercises and examples, covering various topics such as variables, input/output, data structures, and more. All of which are collected from [ELSE](https://else.ctu.edu.vn/course/view.php?id=197).
 
 ## Table of Contents
 
@@ -43,11 +43,11 @@ Before you begin, ensure you have met the following requirements:
    `cd \path\to\Programming_A`
 
 3. **Step 3: Open the Relevant Exercise File**  
-   Open the relevant exercise file (e.g., `Cau 01.c`)
+   Open the relevant exercise file (e.g., `01 Variables, Input, Output\Cau 01.c`)
 
 4. **Step 4: Run the Program**  
-   - **With VSCode**: open debug tab and choose the different launch that use the available compiler. Currently support MSVC and GCC natively.
-   - With other IDE, you can just build it straight away.
+   - **With VSCode**: open debug tab and choose the different launch that use the available compiler. Currently support MSVC, GCC and Clang natively.
+   - With other IDE, you can build it straight away. But to be organized, please build the program under this directory: `\path\to\Programming_A\bin\Debug`
 
 5. **Step 5: Try Your Own**  
    Replace the solutions with your own code. (Remember to comment out the solutions to compare with your code.)
