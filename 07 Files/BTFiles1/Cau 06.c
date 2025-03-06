@@ -3,12 +3,12 @@
 
 #include <stdio.h>
 
-#define inputFileName "input.txt"
-#define outputFileName "output.txt"
+#define INPUT_FILE_NAME "input.txt"
+#define OUTPUT_FILE_NAME "output.txt"
 
-void initializeFile() //! Do not add this function when submitting to ELSE, local use only!
+void initialize_file() //! Do not add this function when submitting to ELSE, local use only!
 {
-    FILE *file = fopen(inputFileName, "w");
+    FILE *file = fopen(INPUT_FILE_NAME, "w");
     if (file == NULL)
     {
         perror("Cannot open file to initialize");
@@ -19,9 +19,9 @@ void initializeFile() //! Do not add this function when submitting to ELSE, loca
     fclose(file);
 }
 
-void readResult() //! Do not add this function when submitting to ELSE, local use only!
+void read_result() //! Do not add this function when submitting to ELSE, local use only!
 {
-    FILE *file = fopen(outputFileName, "r");
+    FILE *file = fopen(OUTPUT_FILE_NAME, "r");
     if (file == NULL)
     {
         perror("Cannot open file to read result");
@@ -37,32 +37,32 @@ void readResult() //! Do not add this function when submitting to ELSE, local us
 
 int main()
 {
-    initializeFile(); //! Remove or comment out this line when submiting to ELSE
+    initialize_file(); //! Remove or comment out this line when submiting to ELSE
 
-    FILE *inputFile = fopen(inputFileName, "r");
-    if (inputFile == NULL)
+    FILE *input_file = fopen(INPUT_FILE_NAME, "r");
+    if (input_file == NULL)
     {
         perror("Cannot open file to read");
-        fclose(inputFile);
+        fclose(input_file);
         return 0;
     }
 
     int a, b;
-    fscanf(inputFile, "%d %d", &a, &b);
-    fclose(inputFile);
+    fscanf(input_file, "%d %d", &a, &b);
+    fclose(input_file);
 
-    FILE *outputFile = fopen(outputFileName, "w");
-    if (outputFile == NULL)
+    FILE *output_file = fopen(OUTPUT_FILE_NAME, "w");
+    if (output_file == NULL)
     {
         perror("Cannot open file write");
-        fclose(outputFile);
+        fclose(output_file);
         return 0;
     }
 
-    fprintf(outputFile, "%d + %d = %d\n", a, b, a + b);
-    fclose(outputFile);
+    fprintf(output_file, "%d + %d = %d\n", a, b, a + b);
+    fclose(output_file);
 
-    readResult(); //! Remove or comment out this line when submiting to ELSE
+    read_result(); //! Remove or comment out this line when submiting to ELSE
 
     return 0;
 }

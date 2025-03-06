@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define f "output.inc"
+#define OUTPUT_FILE "output.inc"
 
 void write_binary(FILE *file, int a)
 {
@@ -9,17 +9,17 @@ void write_binary(FILE *file, int a)
 
 int main()
 {
-    FILE *writeToFile = fopen(f, "wb");
-    if (writeToFile == NULL)
+    FILE *write_to_file = fopen(OUTPUT_FILE, "wb");
+    if (write_to_file == NULL)
     {
         perror("Cannot open file to write!");
         return 1;
     }
 
-    write_binary(writeToFile, 4);
-    fclose(writeToFile);
+    write_binary(write_to_file, 4);
+    fclose(write_to_file);
 
-    FILE *file = fopen(f, "rb");
+    FILE *file = fopen(OUTPUT_FILE, "rb");
     if (file == NULL)
     {
         perror("Cannot open file to read!");

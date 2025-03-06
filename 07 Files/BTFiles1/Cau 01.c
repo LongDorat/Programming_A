@@ -2,56 +2,56 @@
 #include <stdlib.h>
 
 // Change this directory as you wish
-#define inputfile "input.txt"
-#define outputfile "output.txt"
+#define INPUT_FILE "input.txt"
+#define OUTPUT_FILE "output.txt"
 
-void checkPalindrome(char *sInput, char *sOutput);
+void check_palindrome(char *input_file, char *output_file);
 
 int main()
 {
-    checkPalindrome(inputfile, outputfile);
+    check_palindrome(INPUT_FILE, OUTPUT_FILE);
 
     return 0;
 }
 
-void checkPalindrome(char *sInput, char *sOutput)
+void check_palindrome(char *input_file, char *output_file)
 {
-    FILE *inputFile = fopen(sInput, "r");
-    if (inputFile == NULL)
+    FILE *input = fopen(input_file, "r");
+    if (input == NULL)
     {
         perror("Cannot open file to read!");
         exit(EXIT_FAILURE);
     }
-    FILE *outputFile = fopen(sOutput, "w");
-    if (outputFile == NULL)
+    FILE *output = fopen(output_file, "w");
+    if (output == NULL)
     {
         perror("Cannot open file to write!");
         exit(EXIT_FAILURE);
     }
 
     int n;
-    fscanf(inputFile, "%d", &n);
+    fscanf(input, "%d", &n);
 
     double a[100];
     for (int i = 0; i < n; i++)
     {
-        fscanf(inputFile, "%lf", &a[i]);
+        fscanf(input, "%lf", &a[i]);
     }
 
     for (int i = 0; i < n / 2; i++)
     {
         if (a[i] != a[n - i - 1])
         {
-            fprintf(outputFile, "NO");
-            fclose(outputFile);
+            fprintf(output, "NO");
+            fclose(output);
             return;
         }
     }
 
-    fprintf(outputFile, "YES");
+    fprintf(output, "YES");
 
-    fclose(inputFile);
-    fclose(outputFile);
+    fclose(input);
+    fclose(output);
 
     return;
 }

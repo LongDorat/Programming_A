@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define f "output.txt"
+#define OUTPUT_FILE "output.txt"
 
 void write_text(FILE *file, int a, int b)
 {
@@ -10,18 +10,18 @@ void write_text(FILE *file, int a, int b)
 
 int main()
 {
-    FILE *writeToFile = fopen(f, "w");
-    if (writeToFile == NULL)
+    FILE *write_to_file = fopen(OUTPUT_FILE, "w");
+    if (write_to_file == NULL)
     {
         perror("Cannot open file to write!");
         return 1;
     }
 
-    write_text(writeToFile, 4, 7);
+    write_text(write_to_file, 4, 7);
 
-    fclose(writeToFile);
+    fclose(write_to_file);
 
-    FILE *file = fopen(f, "r");
+    FILE *file = fopen(OUTPUT_FILE, "r");
     if (file == NULL)
     {
         perror("Cannot open file to read!");

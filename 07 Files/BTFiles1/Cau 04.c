@@ -2,18 +2,18 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct PhanSo
+struct fraction
 {
-    int TuSo;
-    int MauSo;
+    int numerator;
+    int denominator;
 };
 
-struct PhanSo reduce(int TuSo, int MauSo)
+struct fraction reduce(int numerator, int denominator)
 {
-    struct PhanSo ps;
-    ps.TuSo = TuSo;
-    ps.MauSo = MauSo;
-    int a = ps.TuSo, b = ps.MauSo;
+    struct fraction frac;
+    frac.numerator = numerator;
+    frac.denominator = denominator;
+    int a = frac.numerator, b = frac.denominator;
     while (a != b)
     {
         if (a > b)
@@ -21,9 +21,9 @@ struct PhanSo reduce(int TuSo, int MauSo)
         else
             b -= a;
     }
-    ps.TuSo /= a;
-    ps.MauSo /= a;
-    return ps;
+    frac.numerator /= a;
+    frac.denominator /= a;
+    return frac;
 }
 
 int main()
@@ -39,31 +39,31 @@ int main()
         return 1;
     }
 
-    struct PhanSo ps1, ps2;
+    struct fraction frac1, frac2;
     size_t result;
 
-    result = fread(&ps1, sizeof(struct PhanSo), 1, input);
+    result = fread(&frac1, sizeof(struct fraction), 1, input);
     if (result != 1)
     {
-        perror("Error reading ps1");
+        perror("Error reading frac1");
         fclose(input);
         return 1;
     }
 
-    result = fread(&ps2, sizeof(struct PhanSo), 1, input);
+    result = fread(&frac2, sizeof(struct fraction), 1, input);
     if (result != 1)
     {
-        perror("Error reading ps2");
+        perror("Error reading frac2");
         fclose(input);
         return 1;
     }
 
     fclose(input);
 
-    int TuSo = ps1.TuSo * ps2.MauSo + ps2.TuSo * ps1.MauSo;
-    int MauSo = ps1.MauSo * ps2.MauSo;
-    struct PhanSo sum = reduce(TuSo, MauSo);
-    printf("%d/%d + %d/%d = %d/%d", ps1.TuSo, ps1.MauSo, ps2.TuSo, ps2.MauSo, sum.TuSo, sum.MauSo);
+    int numerator = frac1.numerator * frac2.denominator + frac2.numerator * frac1.denominator;
+    int denominator = frac1.denominator * frac2.denominator;
+    struct fraction sum = reduce(numerator, denominator);
+    printf("%d/%d + %d/%d = %d/%d", frac1.numerator, frac1.denominator, frac2.numerator, frac2.denominator, sum.numerator, sum.denominator);
 
     free(s);
     return 0;

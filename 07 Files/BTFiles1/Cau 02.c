@@ -1,52 +1,52 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define inputfile "input.txt"
-#define outputfile "output.txt"
+#define INPUT_FILE "input.txt"
+#define OUTPUT_FILE "output.txt"
 
-void isSort(char *sInput, char *sOutput);
+void is_sorted(char *input_file, char *output_file);
 
 int main()
 {
-    FILE *inputFile = fopen(inputfile, "w");
-    fprintf(inputFile, "5\n1 2 3 4 5"); // Change this input to the input.txt file
-    fclose(inputFile);
+    FILE *input_file = fopen(INPUT_FILE, "w");
+    fprintf(input_file, "5\n1 2 3 4 5"); // Change this input to the input.txt file
+    fclose(input_file);
 
-    isSort(inputfile, outputfile);
+    is_sorted(INPUT_FILE, OUTPUT_FILE);
 
-    FILE *outputFile = fopen(outputfile, "r");
+    FILE *output_file = fopen(OUTPUT_FILE, "r");
     char c;
-    while ((c = fgetc(outputFile)) != EOF)
+    while ((c = fgetc(output_file)) != EOF)
     {
         printf("%c", c);
     }
-    fclose(outputFile);
+    fclose(output_file);
 
     return 0;
 }
 
-void isSort(char *sInput, char *sOutput)
+void is_sorted(char *input_file, char *output_file)
 {
-    FILE *inputFile = fopen(sInput, "r");
-    if (inputFile == NULL)
+    FILE *input_file_ptr = fopen(input_file, "r");
+    if (input_file_ptr == NULL)
     {
         perror("Cannot open file to read!");
         exit(EXIT_FAILURE);
     }
 
     int n;
-    fscanf(inputFile, "%d", &n);
+    fscanf(input_file_ptr, "%d", &n);
 
     double a[100];
     for (int i = 0; i < n; i++)
     {
-        fscanf(inputFile, "%lf", &a[i]);
+        fscanf(input_file_ptr, "%lf", &a[i]);
     }
 
-    fclose(inputFile);
+    fclose(input_file_ptr);
 
-    FILE *outputFile = fopen(sOutput, "w");
-    if (outputFile == NULL)
+    FILE *output_file_ptr = fopen(output_file, "w");
+    if (output_file_ptr == NULL)
     {
         perror("Cannot open file to write!");
         exit(EXIT_FAILURE);
@@ -56,14 +56,14 @@ void isSort(char *sInput, char *sOutput)
     {
         if (a[i] > a[i + 1])
         {
-            fprintf(outputFile, "NO");
-            fclose(outputFile);
+            fprintf(output_file_ptr, "NO");
+            fclose(output_file_ptr);
             return;
         }
     }
 
-    fprintf(outputFile, "YES");
-    fclose(outputFile);
+    fprintf(output_file_ptr, "YES");
+    fclose(output_file_ptr);
 
     return;
 }

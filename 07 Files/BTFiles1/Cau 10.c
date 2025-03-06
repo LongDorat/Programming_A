@@ -1,48 +1,48 @@
 #include <stdio.h>
 
-#define outputFile "output.inc"
+#define OUTPUT_FILE "output.inc"
 
-struct Complex
+struct complex
 {
     float real;
-    float image;
+    float imag;
 };
 
-void add_and_write(FILE *file, struct Complex a, struct Complex b)
+void add_and_write(FILE *file, struct complex a, struct complex b)
 {
-    struct Complex sum;
+    struct complex sum;
     sum.real = a.real + b.real;
-    sum.image = a.image + b.image;
-    fwrite(&sum, sizeof(struct Complex), 1, file);
+    sum.imag = a.imag + b.imag;
+    fwrite(&sum, sizeof(struct complex), 1, file);
 }
 
 int main()
 {
-    FILE *file = fopen(outputFile, "wb");
+    FILE *file = fopen(OUTPUT_FILE, "wb");
     if (file == NULL)
     {
         perror("Cannot open file to write!");
         return 1;
     }
 
-    struct Complex a, b;
+    struct complex a, b;
     a.real = 1;
-    a.image = 2.1;
+    a.imag = 2.1;
     b.real = 3;
-    b.image = 2.05;
+    b.imag = 2.05;
     add_and_write(file, a, b);
     fclose(file);
 
-    file = fopen(outputFile, "rb");
+    file = fopen(OUTPUT_FILE, "rb");
     if (file == NULL)
     {
         perror("Cannot open file to read!");
         return 1;
     }
 
-    struct Complex sum;
-    fread(&sum, sizeof(struct Complex), 1, file);
-    printf("%.2f + %.2f\n", sum.real, sum.image);
+    struct complex sum;
+    fread(&sum, sizeof(struct complex), 1, file);
+    printf("%.2f + %.2f\n", sum.real, sum.imag);
     fclose(file);
 
     return 0;

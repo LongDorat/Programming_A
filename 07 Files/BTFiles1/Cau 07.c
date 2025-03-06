@@ -5,10 +5,10 @@
 typedef struct
 {
     char name[100];
-    double math, physic, chemistry;
-} SinhVien;
+    double math, physics, chemistry;
+} student;
 
-void initializeFile(char *filename)
+void initialize_file(char *filename)
 {
     FILE *file = fopen(filename, "w");
     if (file == NULL)
@@ -22,42 +22,42 @@ void initializeFile(char *filename)
 
 int main()
 {
-    char *fileDirname = (char *)malloc(100 * sizeof(char));
-    fgets(fileDirname, 100, stdin);
-    fileDirname[strlen(fileDirname) - 1] = '\0';
+    char *file_dirname = (char *)malloc(100 * sizeof(char));
+    fgets(file_dirname, 100, stdin);
+    file_dirname[strlen(file_dirname) - 1] = '\0';
 
-    initializeFile(fileDirname); //! Remove or comment out this line when submitting to ELSE
+    initialize_file(file_dirname); //! Remove or comment out this line when submitting to ELSE
 
-    FILE *inputFile = fopen(fileDirname, "r");
-    if (inputFile == NULL)
+    FILE *input_file = fopen(file_dirname, "r");
+    if (input_file == NULL)
     {
-        printf("Cannot open file %s\n", fileDirname);
-        free(fileDirname);
+        printf("Cannot open file %s\n", file_dirname);
+        free(file_dirname);
         return 0;
     }
 
     int n;
-    fscanf(inputFile, "%d\n", &n);
+    fscanf(input_file, "%d\n", &n);
 
-    SinhVien *sv = (SinhVien *)malloc(n * sizeof(SinhVien));
+    student *sv = (student *)malloc(n * sizeof(student));
     char buffer[200]; // Buffer to read each line
     for (int i = 0; i < n; i++)
     {
-        fgets(buffer, sizeof(buffer), inputFile);
+        fgets(buffer, sizeof(buffer), input_file);
         sscanf(buffer, "%[^\n]", sv[i].name);
-        fgets(buffer, sizeof(buffer), inputFile);
-        sscanf(buffer, "%lf %lf %lf", &sv[i].math, &sv[i].physic, &sv[i].chemistry);
+        fgets(buffer, sizeof(buffer), input_file);
+        sscanf(buffer, "%lf %lf %lf", &sv[i].math, &sv[i].physics, &sv[i].chemistry);
     }
 
     printf("Toan |Vat ly |Hoa hoc |Ho va  ten\n");
     for (int i = n - 1; i >= 0; i--)
     {
-        printf("%5.2f|%5.2f  |%5.2f   |%s\n", sv[i].math, sv[i].physic, sv[i].chemistry, sv[i].name);
+        printf("%5.2f|%5.2f  |%5.2f   |%s\n", sv[i].math, sv[i].physics, sv[i].chemistry, sv[i].name);
     }
     printf("Tong so: %d", n);
 
     free(sv);
-    fclose(inputFile);
-    free(fileDirname);
+    fclose(input_file);
+    free(file_dirname);
     return 0;
 }

@@ -2,76 +2,76 @@
 #include <stdlib.h>
 
 // Change the directory as you wish
-#define inputfile "input.txt"
-#define outputfile "output.txt"
+#define INPUT_FILE "input.txt"
+#define OUTPUT_FILE "output.txt"
 
-void isFinished(char *sInput, char *sOutput);
+void is_finished(char *input_file, char *output_file);
 
 int main()
 {
-    FILE *inputFile = fopen(inputfile, "w");
-    fprintf(inputFile, "3 3\n1 2 3\n4 5 6\n7 8 0"); // Change this input to the input.txt file
-    fclose(inputFile);
+    FILE *input_file = fopen(INPUT_FILE, "w");
+    fprintf(input_file, "3 3\n1 2 3\n4 5 6\n7 8 0"); // Change this input to the input.txt file
+    fclose(input_file);
 
-    isFinished(inputfile, outputfile);
+    is_finished(INPUT_FILE, OUTPUT_FILE);
 
-    FILE *outputFile = fopen(outputfile, "r");
+    FILE *output_file = fopen(OUTPUT_FILE, "r");
     char c;
-    while ((c = fgetc(outputFile)) != EOF)
+    while ((c = fgetc(output_file)) != EOF)
     {
         printf("%c", c);
     }
-    fclose(outputFile);
+    fclose(output_file);
 
     return 0;
 }
 
-void isFinished(char *sInput, char *sOutput)
+void is_finished(char *input_file, char *output_file)
 {
-    FILE *inputFile = fopen(sInput, "r");
-    if (inputFile == NULL)
+    FILE *input_file_ptr = fopen(input_file, "r");
+    if (input_file_ptr == NULL)
     {
         perror("Cannot open file to read!");
         exit(EXIT_FAILURE);
     }
 
     int m, n;
-    fscanf(inputFile, "%d %d\n", &m, &n);
+    fscanf(input_file_ptr, "%d %d\n", &m, &n);
 
     int *array = (int *)malloc(m * n * sizeof(int));
     for (int i = 0; i < m * n; i++)
     {
-        fscanf(inputFile, "%d", &array[i]);
+        fscanf(input_file_ptr, "%d", &array[i]);
     }
 
-    fclose(inputFile);
+    fclose(input_file_ptr);
 
-    FILE *outputFile = fopen(sOutput, "w");
-    if (outputFile == NULL)
+    FILE *output_file_ptr = fopen(output_file, "w");
+    if (output_file_ptr == NULL)
     {
         perror("Cannot open file to write!");
         exit(EXIT_FAILURE);
     }
 
-    int isFinished = 1;
+    int is_finished = 1;
     for (int i = 0; i < m * n - 1; i++)
     {
         if (array[i] > array[i + 1] || array[m * n - 1] != 0)
         {
             if (i == m * n - 2 && array[m * n - 1] == 0)
-                isFinished = 1;
+                is_finished = 1;
             else
-                isFinished = 0;
+                is_finished = 0;
             break;
         }
         else
         {
-            isFinished = 1;
+            is_finished = 1;
         }
     }
 
-    isFinished == 1 ? fprintf(outputFile, "YES") : fprintf(outputFile, "NO");
-    fclose(outputFile);
+    is_finished == 1 ? fprintf(output_file_ptr, "YES") : fprintf(output_file_ptr, "NO");
+    fclose(output_file_ptr);
 
     free(array);
 
