@@ -23,6 +23,8 @@ int is_finished(state_t state);
 int is_sorted(int *arr, int n);
 void init_file(char *filename);
 
+typedef int (*move_func_t)(state_t, state_t *);
+
 int main()
 {
     char *file_name = (char *)malloc(100 * sizeof(char));
@@ -36,6 +38,9 @@ int main()
     init_state(&state, file_name);
 
     char *direction = (char *)malloc(100 * sizeof(char));
+    char *directions[] = {"UP", "DOWN", "LEFT", "RIGHT"};
+    move_func_t move_funcs[] = {move_up, move_down, move_left, move_right};
+
     while (true)
     {
         if (is_finished(state) == 1)
@@ -49,62 +54,36 @@ int main()
         fgets(direction, 100, stdin);
         direction[strlen(direction) - 1] = '\0';
 
-        if (strcmp(direction, "UP") == 0)
+        bool valid_move = false;
+        for (int i = 0; i < 4; ++i)
         {
-            state_t new_state;
-            if (move_up(state, &new_state) == 1)
+            if (strcmp(direction, directions[i]) == 0)
             {
-                state = new_state;
+                state_t new_state;
+                if (move_funcs[i](state, &new_state) == 1)
+                {
+                    state = new_state;
+                }
+                else
+                {
+                    printf("Illegal move.\n");
+                }
+                valid_move = true;
+                break;
+            }
+        }
+
+        if (!valid_move)
+        {
+            if (direction == "EXIT")
+            {
+                printf("You lose!\n");
+                break;
             }
             else
             {
-                printf("Illegal move.\n");
+                printf("Unknown command, please enter: UP, DOWN, LEFT, RIGHT or EXIT\n");
             }
-        }
-        else if (strcmp(direction, "DOWN") == 0)
-        {
-            state_t new_state;
-            if (move_down(state, &new_state) == 1)
-            {
-                state = new_state;
-            }
-            else
-            {
-                printf("Illegal move.\n");
-            }
-        }
-        else if (strcmp(direction, "LEFT") == 0)
-        {
-            state_t new_state;
-            if (move_left(state, &new_state) == 1)
-            {
-                state = new_state;
-            }
-            else
-            {
-                printf("Illegal move.\n");
-            }
-        }
-        else if (strcmp(direction, "RIGHT") == 0)
-        {
-            state_t new_state;
-            if (move_right(state, &new_state) == 1)
-            {
-                state = new_state;
-            }
-            else
-            {
-                printf("Illegal move.\n");
-            }
-        }
-        else if (strcmp(direction, "EXIT") == 0)
-        {
-            printf("You lose!\n");
-            break;
-        }
-        else
-        {
-            printf("Unknown command, please enter: UP, DOWN, LEFT, RIGHT or EXIT\n");
         }
     }
 
